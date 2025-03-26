@@ -22,5 +22,14 @@
   },
   "devDependencies": {
     "nodemon": "^3.1.9"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nofiniaina/mean-server.git"
+  },
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Nofiniaina/mean-server/issues"
+  },
+  "homepage": "https://github.com/Nofiniaina/mean-server#readme"
 }

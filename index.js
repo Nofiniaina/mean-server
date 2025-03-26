@@ -6,13 +6,16 @@ const database = require("./config/database.js");
 dotenv.config();
 
 const app = express();
-const port = process.env.DB_PORT;
+const port = process.env.DB_PORT | 5000;
 
 app.use(express.json());
 app.use(cors());
 
 database.connect();
 
-app.listen(port, ()=>{
-	console.log(`Server running on port: ${port}`);
+app.listen(port, () => {
+  console.log(`Server running on port: ${port}`);
 });
+
+//Route
+app.use("/user", require("./routes/userRoute"));

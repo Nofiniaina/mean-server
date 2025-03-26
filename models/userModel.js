@@ -7,8 +7,6 @@ const UserSchema = new mongoose.Schema({
 	mail: { type: String, unique: true, required: true },
 	numero: { type: String },
 	role: { type: String },
-	createdAt: { type: Date, default: Date.now },
-	updatedAt: { type: Date }
 }, { timestamps: true});
 
 module.exports = mongoose.model("User", UserSchema);
