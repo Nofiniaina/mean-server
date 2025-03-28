@@ -6,7 +6,7 @@ const UserSchema = new mongoose.Schema({
 	mdp: { type: String, required: true },
 	mail: { type: String, unique: true, required: true },
 	numero: { type: String },
-	role: { type: String },
+	role: { type: String, default: "user" },
 }, { timestamps: true});
 
 module.exports = mongoose.model("User", UserSchema);

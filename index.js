@@ -6,7 +6,7 @@ const database = require("./config/database.js");
 dotenv.config();
 
 const app = express();
-const port = process.env.DB_PORT | 5000;
+const port = process.env.DB_PORT || 5000;
 
 app.use(express.json());
 app.use(cors());
@@ -19,3 +19,4 @@ app.listen(port, () => {
 
 //Route
 app.use("/user", require("./routes/userRoute"));
+app.use('/stock', require('./routes/stockRoute.js'));
