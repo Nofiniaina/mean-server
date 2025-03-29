@@ -20,3 +20,4 @@ app.listen(port, () => {
 //Route
 app.use("/user", require("./routes/userRoute"));
 app.use('/stock', require('./routes/stockRoute.js'));
+app.use('/appointment', require('./routes/appointmentRoute.js'));
