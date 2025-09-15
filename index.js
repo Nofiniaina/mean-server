@@ -10,7 +10,7 @@ const port = process.env.DB_PORT || 5000;
 
 app.use(express.json());
 app.use(cors({
-  origin: 'http://localhost:4200', // Remplace par l’URL de ton front Angular
+  origin: 'https://m1p12mean-mendrika-nofiniana.vercel.app/', // Remplace par l’URL de ton front Angular
   credentials: true
 }));
 database.connect();
