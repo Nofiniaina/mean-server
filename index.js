@@ -9,8 +9,10 @@ const app = express();
 const port = process.env.DB_PORT || 5000;
 
 app.use(express.json());
-app.use(cors());
-
+app.use(cors({
+  origin: 'http://localhost:4200', // Remplace par l’URL de ton front Angular
+  credentials: true
+}));
 database.connect();
 
 app.listen(port, () => {
@@ -19,5 +21,6 @@ app.listen(port, () => {
 
 //Route
 app.use("/user", require("./routes/userRoute"));
-app.use('/stock', require('./routes/stockRoute.js'));
-app.use('/appointment', require('./routes/appointmentRoute.js'));
+app.use("/stock", require("./routes/stockRoute.js"));
+app.use("/appointment", require("./routes/appointmentRoute.js"));
+app.use("/service", require("./routes/serviceRoute.js"));

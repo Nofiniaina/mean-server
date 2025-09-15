@@ -29,21 +29,21 @@ exports.connexion = async (req, res) => {
 };
 
 exports.modifUser = async (req, res) => {
-    try {
-        const updates = { ...req.body };
-        if (req.body.mdp) {
-            updates.mdp = await bcrypt.hash(req.body.mdp, 10);
-        }
-        const user = await User.findByIdAndUpdate(req.params.id, updates, {
-            new: true,
-        });
-        if (!user) {
-            return res.status(404).json({ message: "Utilisateur non trouvé" });
-        }
-        res.status(200).json(user);
-    } catch (error) {
-        res.status(400).json({ message: error.message });
+  try {
+    const updates = { ...req.body };
+    if (req.body.mdp) {
+      updates.mdp = await bcrypt.hash(req.body.mdp, 10);
     }
+    const user = await User.findByIdAndUpdate(req.params.id, updates, {
+      new: true,
+    });
+    if (!user) {
+      return res.status(404).json({ message: "Utilisateur non trouvé" });
+    }
+    res.status(200).json(user);
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
 };
 
 exports.suppression = async (req, res) => {
@@ -82,6 +82,23 @@ exports.getUserById = async (req, res) => {
       return res.status(404).json({ message: "Utilisateur non trouvé" });
     }
     res.status(200).json(user);
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+};
+exports.getAllUserByRole = async (req, res) => {
+  try {
+    const { role } = req.params;
+    if (!role || typeof role !== "string") {
+      return res.status(400).json({ message: "Rôle invalide" });
+    }
+    const users = await User.find({ role });
+    if (!users || users.length === 0) {
+      return res
+        .status(404)
+        .json({ message: "Aucun utilisateur trouvé pour ce rôle" });
+    }
+    res.status(200).json(users);
   } catch (error) {
     res.status(400).json({ message: error.message });
   }

@@ -8,4 +8,5 @@ router.post("/modifUser", userController.modifUser);
 router.post("/deleteUser/:id", userController.suppression);
 router.get("/getAllUsers", userController.getAllUsers);
 router.get("/getUserById/:id", userController.getUserById);
+router.get("/getAllUserByRole/:role", userController.getAllUserByRole);
 module.exports = router;
